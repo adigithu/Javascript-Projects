@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur code</title>
+</head>
+<body style="background-color: black; color: #fff">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const a=document.querySelector('.parent')
+    console.log(a)
+    console.log(a.children) //HTMLCollection(4) [div.day, div.day, div.day, div.day]
+    console.log(a.children[0].innerHTML)
+    for (let index = 0; index < a.children.length;index++) {
+        console.log(a.children[index].innerHTML)
+        
+    }
+    a.children[1].style.color="orange"
+    console.log(a.firstElementChild) 
+    console.log(a.lastElementChild)
+    const b=document.querySelector('.day')
+    console.log(b) //Monday
+    console.log(b.parentElement)
+    console.log(b.nextElementSibling)
+
+    console.log("NODES: ", a.childNodes)
+    //9 because every single value has an importance here. Line break is also counted as 1 for each statement
+    
+    //NODES:  NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]
+    
+</script>
+</html>

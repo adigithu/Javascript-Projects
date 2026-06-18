@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code | DOM</title>
+</head>
+<body style="background-color: black; color: #fff";>
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langName){
+        const a=document.createElement('li');
+        a.innerHTML=`${langName}`
+        document.querySelector('.language').appendChild(a)
+    }
+    addLanguage("python")
+    addLanguage("Typescript")
+
+    function addoptimal(languagename){
+        const a=document.createElement('li');
+        a.appendChild(document.createTextNode(languagename))
+        document.querySelector('.language').appendChild(a)
+    }
+    addoptimal('golang')//Optimized approach as here we do not have to traverse the whole tree
+
+    //Edit
+    const second=document.querySelector("li:nth-child(2)") //It will select whole <li>python</li>
+    //second.innerHTML="Mojo" //It involves traversing so it is not affordable
+    const newli=document.createElement('li')
+    newli.textContent="Mojo"
+    second.replaceWith(newli)
+
+    //edit
+
+    const first=document.querySelector("li:first-child")
+    first.outerHTML="<li>Typescript</li>"
+
+    //remove
+
+    const last=document.querySelector("li:last-child")
+    last.remove() //Removes golang
+</script>
+</html>
