@@ -5,7 +5,7 @@ buttons.forEach(function (button){
     console.log(button)
     button.addEventListener('click', function (event){
         console.log(event)
-        console.log(event.target) //From where the event is coming and it is the entire HTML document
+        console.log(event.target)
         if (event.target.id==='grey'){
             body.style.backgroundColor=event.target.id;
         }
