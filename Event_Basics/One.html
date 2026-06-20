@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    //In javascript (Sequentially run language), the events are executed sequentially except the asynchronous events
+    
+    // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // } // onclick gives less features
+
+     // attachEvent(): It was used earlier 
+    // jQuery - on (.on is the event listener)
+
+    // type (keyboard, mouse events), timestamp (timestamp), preventDefault() (Can change/stop the default behaviour of any tag)
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("clicked the owl");
+    // }, false) //addeventlistener can handle multiple events
+    // //false is the default parameter and is optional 
+
+
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("owl clicked"); //It would first give a pointer event in the browser console and opening it, it would give many objects
+    //     //containing many events such as timestamp, view, width,etc.
+    //     e.stopPropagation() 
+    // }, false) //false is the default
+    //event propagation has 2 contexts:
+    /*1.Event bubbling(Mostly used and it is false argument of the event listener)   2.Event Capturing 
+    */
+
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("Clicked inside the ul");
+    // }, false) //Bubbling means going from inner to outer part 
+    // //Like if we click anything inside the ul then images event will only be triggerred
+    // //If we click the owl image then first owl event will be triggerred and then the images that is the ul event will be triggered and 
+    // //this is called event propagation or event bubbling.
+
+    // // Event capturing is when we set the third argument to "true" instead of false and we will move from the outer event to inner event
+    
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("Clicked the owl");
+    //     e.stopPropagation() //It will stop the event from bubbling into the outer event, it will not propagate to the outer event
+    // }, false)
+
+
+
+    
+    
+    document.getElementById('google').addEventListener('click',function(e){ //click is the event which we would listen
+        e.preventDefault();
+        e.stopPropagation()
+        console.log("google clicked");
+    }, false)
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target); //It would basically give the target that is the whole code of element corresponding to the image 
+        //which was clicked
+        console.log(e.target.parentNode)
+        // let removeIt=e.target.parentNode
+        // removeIt.remove() //Now if we will click on any image it would be removed from the browser
+        //If we click on list item then ul is the parent node and if we click on li then all unordered list would be removed
+        console.log(e.target.tagName) //It will give IMG if we click on any image and it will give li if we click outside of the image
+        // if (e.target.tagName === 'IMG') {
+        //     console.log(e.target.id); //It will give the id of the image which is clicked
+        //     let removeIt = e.target.parentNode
+        //     removeIt.remove()
+        // }
+    
+        
+    })
+    
+    //removeIt.parentNode.removeChild(removeIt)
+</script>
+</html>
