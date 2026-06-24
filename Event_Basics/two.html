@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Aditya</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const adi=function (){
+        console.log("Aditya")
+    }
+    setTimeout(adi, 2000) //Here , we are giving the reference of the function for execution
+
+    const text= function(){
+        document.querySelector('h1').innerHTML="Adi feels"
+    }
+    const changeMe=setTimeout(text, 2000) //Adi feels would come into action after 2 seconds of displaying Aditya
+
+    document.querySelector('#stop')
+    addEventListener('click', function(){
+        clearTimeout(changeMe) //It stopped the event from occurring that is the event of "ADI FEELS"
+        console.log("STOPPED")
+    })
+
+
+    clearTimeout
+    
+    // setTimeout(function () {
+    //     console.log("Aditya")
+    // }, 2000)
+    //This setTimeout() method even calls api
+    //handler is a callback function which does not have any name
+    //The setTimeout() will take 2 seconds and then after it, the name will be printed in the console
+
+    //It does the whole execution after the given time
+
+    //In setinterval() method, it takes a interval and does the work repeatedly after the given interval
+
+
+</script>
+</html>
