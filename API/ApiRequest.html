@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+</body>
+<script> //XML request which is also called AJAX request 
+    const requestURL='https://api.github.com/users/hiteshchoudhary'
+
+    const xhr=new XMLHttpRequest(); ////Making a new object
+    xhr.open('GET', requestURL)
+    xhr.onreadystatechange=function(){ //It takes a function and it performs some action if a state is changed
+        //This function would be executed when the state would change
+        console.log(xhr.readyState)
+        if (xhr.readyState===4){
+            const data=JSON.parse(this.responseText)  //parse converts string into JSON and now the data type of data would be object
+            // console.log(this.responseText) //This refers to the current context and we would get the response text from the requested api
+            // console.log(typeof data)  //String    (Whenever we get a response from an URL, we get it in the form of a string)
+            console.log(data.followers)
+        }
+    }
+    //Open sends the request and it has two parameters: Method and string
+    // GET: The structural HTTP verb used strictly to fetch data from the server.
+    xhr.send(); //Then only the open() would be called and the request will be sent
+
+    //V8 engine is written in C++. And it gives some API access and debugging tools
+    //Console.log is available in V8 engine
+    /*
+    1. <script>
+
+Used to write JavaScript inside an HTML file.
+
+<script>
+   // JavaScript code
+
+
+The browser executes whatever is inside the script tag.
+
+2. AJAX
+//XML request which is also called AJAX request
+
+AJAX = Asynchronous JavaScript and XML
+
+It allows a webpage to communicate with a server without refreshing the page.
+
+Example:
+
+Instagram loads new posts without reloading.
+Gmail fetches new emails automatically.
+
+Modern applications often use JSON instead of XML.
+
+3. API
+const requestURL='https://api.github.com/users/hiteshchoudhary'
+
+API = Application Programming Interface
+
+An API provides data from a server.
+
+GitHub's API returns information about GitHub users.
+
+When you visit:
+
+https://api.github.com/users/hiteshchoudhary
+
+GitHub sends data like:
+
+{
+  "login":"hiteshchoudhary",
+  "followers":15000,
+  "following":5
+}
+4. const
+const requestURL = '...'
+
+const creates a variable whose value cannot be reassigned.
+
+const name = "Aditya";
+
+name = "Rahul"; // Error
+5. URL
+'https://api.github.com/users/hiteshchoudhary'
+
+URL = Uniform Resource Locator
+
+It is the address of a resource on the internet.
+
+Parts:
+
+https://api.github.com/users/hiteshchoudhary
+│      │             │
+│      │             └── Path
+│      └── Domain
+└── Protocol
+6. XMLHttpRequest
+const xhr = new XMLHttpRequest();
+
+An old JavaScript object used to communicate with servers.
+
+Creates a request object.
+
+const xhr = new XMLHttpRequest();
+
+Think of it as:
+
+"I want to send a request to some server and get data back."
+
+Nowadays fetch() is more common.
+
+7. new
+new XMLHttpRequest()
+
+new creates an object from a class/constructor.
+
+Example:
+
+const date = new Date();
+
+Creates a Date object.
+
+Similarly:
+
+const xhr = new XMLHttpRequest();
+
+Creates an XMLHttpRequest object.
+
+8. Object
+const xhr = new XMLHttpRequest();
+
+xhr is an object.
+
+Objects store data and functions.
+
+Example:
+
+const student = {
+    name: "Aditya",
+    age: 23
+};
+9. open()
+xhr.open('GET', requestURL)
+
+Configures the request.
+
+Syntax:
+
+xhr.open(method, url)
+
+Here:
+
+'GET'
+
+= Fetch data
+
+requestURL
+
+= Where to fetch from
+
+10. HTTP Method
+GET
+
+HTTP methods tell the server what action you want.
+
+Common methods:
+
+Method	Purpose
+GET	Fetch data
+POST	Send data
+PUT	Update data
+DELETE	Delete data
+11. onreadystatechange
+xhr.onreadystatechange = function(){}
+
+An event handler.
+
+Runs whenever the request state changes.
+
+Example:
+
+xhr.onreadystatechange = function(){
+   console.log(xhr.readyState);
+}
+12. Anonymous Function
+function(){
+}
+
+A function without a name.
+
+function(){
+   console.log("Hello");
+}
+
+Used when a function is needed only once.
+
+13. Event
+
+State changes trigger events.
+
+Example:
+
+onclick
+onchange
+onreadystatechange
+
+Here:
+
+onreadystatechange
+
+fires whenever request progress changes.
+
+14. readyState
+xhr.readyState
+
+Represents current request status.
+
+Values:
+
+Value	Meaning
+0	Request not initialized
+1	Connection opened
+2	Request received
+3	Processing response
+4	Response completed
+15. console.log()
+console.log(xhr.readyState)
+
+Prints data to the browser console.
+
+Useful for debugging.
+
+Press:
+
+F12
+
+or
+
+Inspect → Console
+16. if
+if(xhr.readyState===4)
+
+Checks a condition.
+
+if(age > 18){
+   console.log("Adult");
+}
+17. ===
+xhr.readyState === 4
+
+Strict equality operator.
+
+Checks:
+
+Value
+Data type
+
+Example:
+
+5 === 5      // true
+5 === "5"    // false
+18. JSON
+JSON.parse(...)
+
+JSON = JavaScript Object Notation
+
+Used for data exchange.
+
+Example:
+
+{
+  "name":"Aditya",
+  "age":23
+}
+
+Looks like a JavaScript object.
+
+19. responseText
+this.responseText
+
+Contains data returned by the server.
+
+Before parsing:
+
+'{"followers":15000}'
+
+This is a string.
+
+20. this
+this.responseText
+
+this refers to the current object.
+
+Inside:
+
+xhr.onreadystatechange = function(){
+}
+
+this refers to xhr.
+
+Equivalent:
+
+xhr.responseText
+21. JSON.parse()
+const data = JSON.parse(this.responseText)
+
+Converts JSON string into JavaScript object.
+
+Before:
+
+'{"followers":15000}'
+
+(String)
+
+After:
+
+{
+ followers:15000
+}
+
+(Object)
+
+22. Response
+
+The data returned by the server.
+
+Request:
+
+"Give me user data"
+
+Response:
+
+{
+  "followers":15000
+}
+23. Object Property
+data.followers
+
+Accessing a property inside an object.
+
+Example:
+
+const student = {
+   name:"Aditya",
+   age:23
+};
+
+console.log(student.name);
+
+Similarly:
+
+data.followers
+
+gets the follower count.
+
+24. send()
+xhr.send();
+
+Actually sends the request.
+
+Without send(), nothing happens.
+
+Flow:
+
+xhr.open(...)
+xhr.send()
+Complete Flow of Your Code
+1. Create URL
+        ↓
+2. Create XMLHttpRequest object
+        ↓
+3. Configure request using open()
+        ↓
+4. Attach onreadystatechange function
+        ↓
+5. Send request using send()
+        ↓
+6. Server returns data
+        ↓
+7. readyState becomes 4
+        ↓
+8. JSON.parse() converts string → object
+        ↓
+9. data.followers extracts followers count
+        ↓
+10. console.log() prints it
+
+Visual Flow:
+
+Browser
+   │
+   │ GET Request
+   ▼
+GitHub API
+   │
+   │ JSON Response
+   ▼
+responseText
+   │
+   ▼
+JSON.parse()
+   │
+   ▼
+JavaScript Object
+   │
+   ▼
+data.followers
+   │
+   ▼
+Console Output
+
+This example is one of the most important pieces of JavaScript for understanding AJAX, APIs, asynchronous programming, events, JSON, objects, and HTTP requests.
+
+In simple words:
+
+The browser sends a GET request to the GitHub API asking for user information.
+The GitHub API returns the data in JSON format, which is received as a string in responseText.
+JSON.parse() converts that JSON string into a JavaScript object so that its properties can be accessed.
+data.followers retrieves the followers count from the object, and console.log() displays it in the browser console.
+
+Flow:
+Browser → Request GitHub Data → Receive JSON Response → Convert String to Object → Access followers → Print in Console.
+*/
+</script>
+</html>
