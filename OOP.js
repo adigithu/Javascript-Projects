@@ -121,4 +121,4 @@ console.log(auto instanceof Car);
 // Expected output: true
 
 console.log(auto instanceof Object);
-// Expected output: true
+// Expected output: true7
