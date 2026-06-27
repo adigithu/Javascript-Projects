@@ -122,3 +122,4 @@ console.log(auto instanceof Car);
 
 console.log(auto instanceof Object);
 // Expected output: true7
+*/
