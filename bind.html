@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library="React"
+            this.server="https://localHost:300"
+            //requirement
+            document.querySelector('button').addEventListener('click', this.handleClick.bind(this))
+        }
+        handleClick(){
+            console.log("Clicked")
+            console.log(this.server)
+        }
+    }
+    const app=new React()
+
+    /*
+    When you pass this.handleClick to addEventListener, the method loses its context. Inside the handler, this refers to the button element,
+    not your React class instance.
+
+    .bind(this) creates a new function with a locked-in this value:
+    this.handleClick.bind(this)
+    Returns a new function where 'this' always refers to the React instance
+
+    bind() ensures that this inside your method always refers to the object instance, not the element triggering the event.
+
+</script>
+</html>

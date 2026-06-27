@@ -22,3 +22,5 @@ class Teacher extends User{
 const c=new Teacher("Boi", "Adu.com")
 c.LogMe() //Username is Boi
 console.log(c.created()) //It cannot even have access to created function
+
+console.
